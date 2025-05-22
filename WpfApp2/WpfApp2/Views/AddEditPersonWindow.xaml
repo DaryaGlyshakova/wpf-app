@@ -1,0 +1,59 @@
+﻿<Window x:Class="WpfApp2.Views.AddEditPersonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2.Views"
+        mc:Ignorable="d"
+        Title="Добавление/Редактирование клиента" Height="450" Width="400"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize" ShowInTaskbar="False">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="ИНН:" VerticalAlignment="Center" Margin="0,0,5,5"/>
+        <TextBox Grid.Row="0" Grid.Column="1" x:Name="InnTextBox" Margin="0,0,0,5" VerticalAlignment="Center"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Тип клиента:" VerticalAlignment="Center" Margin="0,0,5,5"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="TypeTextBox" Margin="0,0,0,5" VerticalAlignment="Center"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Шифр:" VerticalAlignment="Center" Margin="0,0,5,5"/>
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="ShiferTextBox" Margin="0,0,0,5" VerticalAlignment="Center"/>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Дата регистрации:" VerticalAlignment="Center" Margin="0,0,5,5"/>
+        <DatePicker Grid.Row="3" Grid.Column="1" x:Name="DataDatePicker" Margin="0,0,0,5" VerticalAlignment="Center"/>
+
+        <Label Grid.Row="4" Grid.Column="0" Content="Лицензия орг.:" VerticalAlignment="Center" Margin="0,0,5,5"/>
+        <ComboBox Grid.Row="4" Grid.Column="1" x:Name="OrgLicenseComboBox" Margin="0,0,0,5" VerticalAlignment="Center"
+                  DisplayMemberPath="LicenseNumber" SelectedValuePath="ID"/>
+        <!-- Укажи правильные пути -->
+
+        <Label Grid.Row="5" Grid.Column="0" Content="Разновидность:" VerticalAlignment="Center" Margin="0,0,5,5"/>
+        <ComboBox Grid.Row="5" Grid.Column="1" x:Name="VerietyComboBox" Margin="0,0,0,5" VerticalAlignment="Center"
+                  DisplayMemberPath="Name" SelectedValuePath="ID"/>
+        <!-- Укажи правильные пути -->
+
+        <Label Grid.Row="6" Grid.Column="0" Content="Статус клиента:" VerticalAlignment="Center" Margin="0,0,5,5"/>
+        <ComboBox Grid.Row="6" Grid.Column="1" x:Name="StatusComboBox" Margin="0,0,0,5" VerticalAlignment="Center"
+                  DisplayMemberPath="Name" SelectedValuePath="ID"/>
+        <!-- Укажи правильные пути -->
+
+        <StackPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button Content="Сохранить" Width="100" Margin="0,0,5,0" Click="SaveButton_Click" IsDefault="True"/>
+            <Button Content="Отмена" Width="100" Click="CancelButton_Click" IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

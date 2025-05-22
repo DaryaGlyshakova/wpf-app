@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище WPFModel1Container" CdmEntityContainer="WPFEntities1">
+    <EntitySetMapping Name="Agreements">
+      <EntityTypeMapping TypeName="WPFModel1.Agreements">
+        <MappingFragment StoreEntitySet="Agreements">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="DataOpen" ColumnName="DataOpen" />
+          <ScalarProperty Name="DataClose" ColumnName="DataClose" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrgLicenses">
+      <EntityTypeMapping TypeName="WPFModel1.OrgLicenses">
+        <MappingFragment StoreEntitySet="OrgLicenses">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persons">
+      <EntityTypeMapping TypeName="WPFModel1.Persons">
+        <MappingFragment StoreEntitySet="Persons">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrgLicenseID" ColumnName="OrgLicenseID" />
+          <ScalarProperty Name="VerietyID" ColumnName="VerietyID" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="Inn" ColumnName="Inn" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Shifer" ColumnName="Shifer" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StatusAgreements">
+      <EntityTypeMapping TypeName="WPFModel1.StatusAgreements">
+        <MappingFragment StoreEntitySet="StatusAgreements">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Statuses">
+      <EntityTypeMapping TypeName="WPFModel1.Statuses">
+        <MappingFragment StoreEntitySet="Statuses">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Types">
+      <EntityTypeMapping TypeName="WPFModel1.Types">
+        <MappingFragment StoreEntitySet="Types">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Verieties">
+      <EntityTypeMapping TypeName="WPFModel1.Verieties">
+        <MappingFragment StoreEntitySet="Verieties">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,39 @@
+﻿<Page x:Class="WpfApp2.Views.AgreementsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WpfApp2.Views"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Договоры">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+            <Label Content="Поиск по клиенту (ИНН/Шифр):"/>
+            <TextBox Width="200" Margin="5,0,5,0" x:Name="SearchClientTextBox"/>
+            <Button Content="Найти" Width="80" Click="SearchAgreements_Click"/>
+            <Button Content="Показать все" Width="100" Margin="5,0,0,0" Click="LoadAllAgreements_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button Content="Добавить" Width="100" Margin="0,0,5,0" Click="AddAgreement_Click"/>
+            <Button Content="Редактировать" Width="100" Margin="0,0,5,0" Click="EditAgreement_Click"/>
+            <Button Content="Удалить" Width="100" Margin="0,0,5,0" Click="DeleteAgreement_Click"/>
+        </StackPanel>
+        <DataGrid Grid.Row="2" x:Name="AgreementsGrid" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+            <DataGrid.Columns>
+                <!-- Колонки определим позже -->
+                <DataGridTextColumn Header="Номер" Binding="{Binding Number}" Width="*"/>
+                <DataGridTextColumn Header="Клиент (ИНН)" Binding="{Binding Persons.Inn}" Width="150"/>
+                <!-- Пример для связанной таблицы -->
+                <DataGridTextColumn Header="Тип договора" Binding="{Binding Types.Name}" Width="150"/>
+                <DataGridTextColumn Header="Статус договора" Binding="{Binding StatusAgreements.Status}" Width="150"/>
+                <DataGridTextColumn Header="Дата открытия" Binding="{Binding DataOpen, StringFormat='dd.MM.yyyy'}" Width="120"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d8bb8d4a5e564c1a9b2d53377fe96dc2" Name="Diagram1">
+        <EntityTypeShape EntityType="WPFModel1.Agreements" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WPFModel1.OrgLicenses" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WPFModel1.Persons" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WPFModel1.StatusAgreements" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="WPFModel1.Statuses" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WPFModel1.Types" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WPFModel1.Verieties" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <AssociationConnector Association="WPFModel1.FK_Agreements_Persons" ManuallyRouted="false" />
+        <AssociationConnector Association="WPFModel1.FK_Agreements_StatusAgreements" ManuallyRouted="false" />
+        <AssociationConnector Association="WPFModel1.FK_Agreements_Types" ManuallyRouted="false" />
+        <AssociationConnector Association="WPFModel1.FK_Persons_OrgLicenses" ManuallyRouted="false" />
+        <AssociationConnector Association="WPFModel1.FK_Persons_Statuses" ManuallyRouted="false" />
+        <AssociationConnector Association="WPFModel1.FK_Persons_Verieties" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

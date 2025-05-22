@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WPFModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Agreements">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonID" Type="Int32" Nullable="false" />
+    <Property Name="TypeID" Type="Int32" Nullable="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <Property Name="Number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DataOpen" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DataClose" Type="DateTime" Precision="0" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Persons" Relationship="Self.FK_Agreements_Persons" FromRole="Agreements" ToRole="Persons" />
+    <NavigationProperty Name="StatusAgreements" Relationship="Self.FK_Agreements_StatusAgreements" FromRole="Agreements" ToRole="StatusAgreements" />
+    <NavigationProperty Name="Types" Relationship="Self.FK_Agreements_Types" FromRole="Agreements" ToRole="Types" />
+  </EntityType>
+  <EntityType Name="OrgLicenses">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LicenseNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Persons" Relationship="Self.FK_Persons_OrgLicenses" FromRole="OrgLicenses" ToRole="Persons" />
+  </EntityType>
+  <EntityType Name="Persons">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrgLicenseID" Type="Int32" />
+    <Property Name="VerietyID" Type="Int32" Nullable="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <Property Name="Inn" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Shifer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Agreements" Relationship="Self.FK_Agreements_Persons" FromRole="Persons" ToRole="Agreements" />
+    <NavigationProperty Name="OrgLicenses" Relationship="Self.FK_Persons_OrgLicenses" FromRole="Persons" ToRole="OrgLicenses" />
+    <NavigationProperty Name="Statuses" Relationship="Self.FK_Persons_Statuses" FromRole="Persons" ToRole="Statuses" />
+    <NavigationProperty Name="Verieties" Relationship="Self.FK_Persons_Verieties" FromRole="Persons" ToRole="Verieties" />
+  </EntityType>
+  <EntityType Name="StatusAgreements">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Agreements" Relationship="Self.FK_Agreements_StatusAgreements" FromRole="StatusAgreements" ToRole="Agreements" />
+  </EntityType>
+  <EntityType Name="Statuses">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Persons" Relationship="Self.FK_Persons_Statuses" FromRole="Statuses" ToRole="Persons" />
+  </EntityType>
+  <EntityType Name="Types">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Agreements" Relationship="Self.FK_Agreements_Types" FromRole="Types" ToRole="Agreements" />
+  </EntityType>
+  <EntityType Name="Verieties">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Persons" Relationship="Self.FK_Persons_Verieties" FromRole="Verieties" ToRole="Persons" />
+  </EntityType>
+  <Association Name="FK_Agreements_Persons">
+    <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
+    <End Role="Agreements" Type="Self.Agreements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persons">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Agreements">
+        <PropertyRef Name="PersonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Agreements_StatusAgreements">
+    <End Role="StatusAgreements" Type="Self.StatusAgreements" Multiplicity="1" />
+    <End Role="Agreements" Type="Self.Agreements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusAgreements">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Agreements">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Agreements_Types">
+    <End Role="Types" Type="Self.Types" Multiplicity="1" />
+    <End Role="Agreements" Type="Self.Agreements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Agreements">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persons_OrgLicenses">
+    <End Role="OrgLicenses" Type="Self.OrgLicenses" Multiplicity="0..1" />
+    <End Role="Persons" Type="Self.Persons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrgLicenses">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Persons">
+        <PropertyRef Name="OrgLicenseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persons_Statuses">
+    <End Role="Statuses" Type="Self.Statuses" Multiplicity="1" />
+    <End Role="Persons" Type="Self.Persons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Statuses">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Persons">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persons_Verieties">
+    <End Role="Verieties" Type="Self.Verieties" Multiplicity="1" />
+    <End Role="Persons" Type="Self.Persons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Verieties">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Persons">
+        <PropertyRef Name="VerietyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WPFEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Agreements" EntityType="Self.Agreements" />
+    <EntitySet Name="OrgLicenses" EntityType="Self.OrgLicenses" />
+    <EntitySet Name="Persons" EntityType="Self.Persons" />
+    <EntitySet Name="StatusAgreements" EntityType="Self.StatusAgreements" />
+    <EntitySet Name="Statuses" EntityType="Self.Statuses" />
+    <EntitySet Name="Types" EntityType="Self.Types" />
+    <EntitySet Name="Verieties" EntityType="Self.Verieties" />
+    <AssociationSet Name="FK_Agreements_Persons" Association="Self.FK_Agreements_Persons">
+      <End Role="Persons" EntitySet="Persons" />
+      <End Role="Agreements" EntitySet="Agreements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Agreements_StatusAgreements" Association="Self.FK_Agreements_StatusAgreements">
+      <End Role="StatusAgreements" EntitySet="StatusAgreements" />
+      <End Role="Agreements" EntitySet="Agreements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Agreements_Types" Association="Self.FK_Agreements_Types">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="Agreements" EntitySet="Agreements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persons_OrgLicenses" Association="Self.FK_Persons_OrgLicenses">
+      <End Role="OrgLicenses" EntitySet="OrgLicenses" />
+      <End Role="Persons" EntitySet="Persons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persons_Statuses" Association="Self.FK_Persons_Statuses">
+      <End Role="Statuses" EntitySet="Statuses" />
+      <End Role="Persons" EntitySet="Persons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persons_Verieties" Association="Self.FK_Persons_Verieties">
+      <End Role="Verieties" EntitySet="Verieties" />
+      <End Role="Persons" EntitySet="Persons" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
